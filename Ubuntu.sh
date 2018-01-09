@@ -163,3 +163,10 @@ elif [ -f Ubuntu.conf ]; then
 else
   echo "The file 'Ubuntu.conf' is missing. Please download it before running the script"
 fi
+
+if [ "$USER_CHECK" = true ]; then 
+   if [ "head -n 1 userList.text | grep approvedUsers.txt" = null ] then ##finds a user in the list of installed users that is not in the list of approved
+      sudo deluser "head -n 1 userList.text" ## deletes that user.  Will add something along the lines of -- tail -n 1 <head -n /x/ userList.txt -- that should take the user at x position
+   fi
+fi
+
